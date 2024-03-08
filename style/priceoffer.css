@@ -176,3 +176,16 @@ body{
   background-color: var(--mainc2);
   transition: 0.5s;
 }
+
+.modif_suppr{
+  display: flex;
+justify-content: space-evenly;
+}
+
+form{
+  width: fit-content;
+}
+
+.main{
+  margin: 50px 0;
+}
