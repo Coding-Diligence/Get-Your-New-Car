@@ -1,3 +1,13 @@
+<?php
+include_once "database.php"; // Include the file to connect to the database
+
+// Fetch messages from the database
+$sql = "SELECT * FROM messages";
+$stmt = $bdLink->prepare($sql);
+$stmt->execute();
+$messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,54 +22,41 @@
 </head>
 <body>
     <?php include_once "header.php"; ?>
-  <div w3-include-html="header.html"></div>
-
     <section class="chat p-5 h-5" id="conversations-section"></section>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            function renderChatUser(message, time, profileImage) {
-                return `
-                <ul class="list-unstyled user_msg">
-                    <li class="d-flex justify-content-between mb-4">
-                        <div class="card">
-                            <div class="card-header d-flex justify-content-between p-3">
-                                <p class="fw-bold mb-0">Me</p>
-                                <p class="text-muted small mb-0">
-                                    <i class="far fa-clock"></i> ${time}
-                                </p>
-                            </div>
-                            <div class="card-body">
-                                <p class="mb-0">
-                                    ${message}
-                                </p>
-                            </div>
-                        </div>
-                        <img src="${profileImage}" alt="avatar" 
-                            class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-                    </li>
-                </ul>
-                `;
-            }
-            function renderBotMessage(sender, message, time, profileImage) {
+            function renderMessage(message) {
                 return (`
-                <ul class="list-unstyled bot_msg">
+                <ul class="list-unstyled ${message.sender === 'user' ? 'user_msg' : 'bot_msg'}">
                     <li class="d-flex justify-content-between mb-4">
-                        <img src="${profileImage}" alt="avatar" 
-                            class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-                        <div class="card">
-                            <div class="card-header d-flex justify-content-between p-3">
-                                <p class="fw-bold mb-0">${sender}</p>
-                                <p class="text-muted small mb-0">
-                                    <i class="far fa-clock"></i> ${time}
-                                </p>
-                            </div>
-                            <div class="card-body">
-                                <p class="mb-0">
-                                    ${message}
-                                </p>
-                            </div>
-                        </div>
+                        ${message.sender === 'user' ? 
+                            `<div class="card">
+                                <div class="card-header d-flex justify-content-between p-3">
+                                    <p class="fw-bold mb-0">Me</p>
+                                    <p class="text-muted small mb-0">
+                                        <i class="far fa-clock"></i> ${message.time}
+                                    </p>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-0">${message.text}</p>
+                                </div>
+                            </div>` 
+                            : 
+                            `<div class="card">
+                                <div class="card-header d-flex justify-content-between p-3">
+                                    <p class="fw-bold mb-0">${message.sender}</p>
+                                    <p class="text-muted small mb-0">
+                                        <i class="far fa-clock"></i> ${message.time}
+                                    </p>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-0">${message.text}</p>
+                                </div>
+                            </div>`
+                        }
+                        <img src="${message.profileImage}" alt="avatar" 
+                            class="rounded-circle d-flex align-self-start ${message.sender === 'user' ? 'ms-3' : 'me-3'} shadow-1-strong" width="60">
                     </li>
                 </ul>
                 `);
@@ -68,20 +65,7 @@
             function renderConversations(messages) {
                 let conversationHTML = '';
                 messages.forEach((message) => {
-                    if (message.sender === 'user') {
-                        conversationHTML += renderChatUser(
-                            message.text,
-                            message.time,
-                            message.profileImage
-                        );
-                    } else {
-                        conversationHTML += renderBotMessage(
-                            message.sender,
-                            message.text,
-                            message.time,
-                            message.profileImage
-                        );
-                    }
+                    conversationHTML += renderMessage(message);
                 });
 
                 return (`
@@ -98,10 +82,7 @@
             }
 
             function render() {
-                const messages = [
-                    { sender: 'Bot', text: 'Comment puis-je vous aider?', time: '12 mins ago', profileImage: 'assets/1.jpg' },
-                    { sender: 'user', text: 'coucou', time: '12 mins ago', profileImage: 'assets/2.jpg' }
-                ];
+                const messages = <?php echo json_encode($messages); ?>;
                 const conversationsSection = renderConversations(messages);
 
                 document.getElementById('conversations-section').innerHTML = conversationsSection;
@@ -109,7 +90,6 @@
 
             render();
         });
-        includeHTML();
     </script>
 </body>
 </html>
