@@ -40,14 +40,26 @@ switch ($_SERVER['SERVER_NAME']) {
         
 }
 session_start();
-try {
-    $bdLink = new PDO('mysql:host=' . $paramsServer['server'] . ';port=' . $paramsServer['port'] . ';dbname=' . $paramsServer['database'] . ';charset=utf8', $paramsServer['username'], $paramsServer['password']);
-    $bdLink->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    $bdLink->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $_SESSION['db'] = 'Database Connected';
-} catch (PDOException $e) {
-    $_SESSION['db'] = 'Error!';
-    die();
+if (PHP_OS == 'WINNT') {
+    try {
+        $bdLink = new PDO('mysql:host=localhost;dbname=car_management;charset=utf8', 'root', '');
+        $bdLink->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $bdLink->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $_SESSION['db'] = 'Database Connected';
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+        $_SESSION['db'] = 'Error!';
+    }
+} else if (PHP_OS == 'Darwin') {
+    try {
+        $bdLink = new PDO('mysql:host=localhost;dbname=car_management;charset=utf8', 'root', 'root');
+        $bdLink->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $bdLink->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $_SESSION['db'] = 'Database Connected';
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+        $_SESSION['db'] = 'Error!';
+    }
 }
 /* $cars = [
     ['Subaru', 9000, 'blue', 3000, 'new', 'assets/voiture1.jpg'],

@@ -13,7 +13,7 @@ var_dump($_SESSION);
     <div>
       <?php if(isset($_SESSION['connexion']) && $_SESSION['connexion'] == 'connected'):?>
         <button class="search-submit">
-          <a class="fin" href="interface.php">Add Car</a>
+          <a class="fin" href="create.php">Add Car</a>
         </button>
         <button class="search-submit">
           <a class="fin" href="message.php">Messagerie</a>
