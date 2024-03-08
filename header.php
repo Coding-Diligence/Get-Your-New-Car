@@ -18,7 +18,7 @@
         </button>
         <?php else : ?>
           <button class="search-submit">
-            <a class="fin" href="?page=register">inscription</a>
+            <a class="fin" href="register.php">inscription</a>
           </button>
           <button class="search-submit">
             <a class="fin" href="login.php">Connexion</a>

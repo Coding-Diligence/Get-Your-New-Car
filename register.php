@@ -1,7 +1,6 @@
 <?php 
-require './controllers/login_controller.php';
+require './controllers/register_controller.php'
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -20,13 +19,21 @@ require './controllers/login_controller.php';
     <main>
         <container>
             <div class="display-log">
-                <div class="login-log">
+                <div class="register-log">
                     <div class="register-txt">
-                        Vous n'avez pas de compte ?
+                        Vous avez déjà un compte ?
                     </div>
-                    <a href="register.php" class="register-button">s'inscrire -></a>
+                    <a href="login.php" class="register-button">se connecter -></a>
                 </div>
-                <form action="" method="post" enctype="multipart/form-data"class="register-display">
+                <form action="" method="post" enctype="multipart/form-data" class="register-display">
+                    <div class="register-disp">
+                        <label for="nom" class="login-label">Nom</label>
+                        <input type="text" placeholder="Nom" name="nom" class="register-input">
+                    </div>
+                    <div class="register-disp">
+                        <label for="prenom" class="register-label">Prénom</label>
+                        <input type="text" placeholder="Prénom" name="prenom" class="register-input">
+                    </div>
                     <div class="register-disp">
                         <label for="email" class="register-label">E-mail</label>
                         <input type="email" placeholder="E-mail" name="email" class="register-input">
@@ -36,7 +43,7 @@ require './controllers/login_controller.php';
                         <input type="password" placeholder="Mot de passe" name="password" class="register-input">
                     </div>
                     <div class="register-disp">
-                        <input type="submit" class="register-submit" value ="Se connecter">
+                        <input type="submit" class="register-submit" value ="S'enregistrer">
                     </div>
                 </form>
             </div>
