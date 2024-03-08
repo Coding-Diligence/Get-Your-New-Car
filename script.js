@@ -26,25 +26,7 @@ const backup = [
   { name: 'Dirt Car',price: 2500, color: "blue" },
   { name: 'Mitsubishi',price: 22000, color: "grey" }
 ];
-const car = JSON.parse(localStorage.getItem('cars')) || [];
 
-function addCar() {
-    const carName = document.getElementById('carName').value;
-    const carPrice = document.getElementById('carPrice').value;
-    const carColor = document.getElementById('carColor').value;
-
-    const newCar = {
-        name: carName,
-        price: carPrice,
-        color: carColor,
-    };
-
-    car.push(newCar);
-
-    localStorage.setItem('cars', JSON.stringify(car));
-
-    alert('Car added successfully!');
-}
 function card(nb, color, marque) {
   let html = ``;
   for (let index = 0; index < nb; index++) {
