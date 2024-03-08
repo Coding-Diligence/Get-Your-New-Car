@@ -1,59 +1,46 @@
 <?php
-switch (true) {
-    case $_SERVER['SERVER_NAME'] === '127.0.0.1':
-    case $_SERVER['SERVER_NAME'] === 'localhost':
-        define('ENVIRONMENT', 'development');
+$system_info = php_uname();
 
-        // Set parameters for local development environment
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            // Windows environment
-            $paramsServer = array(
-                'server'    => "localhost",
-                'database'  => "car_management",
-                'username'  => "root",
-                'password'  => "",
-                'port' => 3306,
-            );
+if (strpos($system_info, 'Windows') !== false) {
+    define('ENVIRONMENT', 'development');
 
-            define('DNS', 'https://car.test/');
-            define('HOME', $_SERVER['CONTEXT_DOCUMENT_ROOT']);
-        } elseif (strtoupper(substr(PHP_OS, 0, 3)) === 'MAC') {
-            // Mac environment
-            $paramsServer = array(
-                'server'    => "localhost",
-                'database'  => "car_management_mac",
-                'username'  => "root",
-                'password'  => "root",
-                'port' => 3306,
-            );
+    $paramsServer = array(
+        'server'    => "localhost",
+        'database'  => "car_management",
+        'username'  => "root",
+        'password'  => "",
+        'port' => 3306,
+    );
 
-            define('DNS', 'https://car.test/');
-            define('HOME', $_SERVER['CONTEXT_DOCUMENT_ROOT']);
-        }
+    define('DNS', 'https://car.test/');
+    define('HOME', $_SERVER['CONTEXT_DOCUMENT_ROOT']);
+} elseif (strpos($system_info, 'Darwin') !== false) {
+    define('ENVIRONMENT', 'mac_development');
 
-        define('PREFIX', '');
-        define('PATH_FILES', "files/");
+    $paramsServer = array(
+        'server'    => "localhost",
+        'database'  => "car_management_mac",
+        'username'  => "root",
+        'password'  => "",
+        'port' => 3306,
+    );
 
-        break;
+    define('DNS', 'https://car.test/');
+    define('HOME', $_SERVER['CONTEXT_DOCUMENT_ROOT']);
+} else {
+    define('ENVIRONMENT', 'production');
 
-    default:
-        define('ENVIRONMENT', 'production');
+    $paramsServer = array(
+        'server' => "mysql.db",
+        'database' => "car_management",
+        'username' => "",
+        'password' => "",
+        'port' => 3306
+    );
 
-        // Set parameters for production environment
-        $paramsServer = array(
-            'server' => "mysql.db",
-            'database' => "car_management",
-            'username' => "",
-            'password' => "",
-            'port' => 3306
-        );
-
-        define('PREFIX', '');
-        define('DNS', 'https://www.portfolio.fr/');
-        define('HOME', $_SERVER['DOCUMENT_ROOT']);
-
-        define('PATH_FILES', "files/");
-        exit;
+    define('DNS', 'https://www.car.fr/');
+    define('HOME', $_SERVER['DOCUMENT_ROOT']);
+    exit;
 }
 
 session_start();
