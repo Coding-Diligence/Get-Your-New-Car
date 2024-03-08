@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' )
         </div>
         <div class="inp-img">
             <div class="name-title">Ajouter une photo</div>
-            <input type="file" name="category_image" id="carImage" accept="image/jpeg, image/png" required value="<?= $_POST['image_path'] ?? '' ?>">
+            <input type="file" name="category_image" id="carImage" accept="image/jpeg, image/png" multiple required value="<?= $_POST['image_path'] ?? '' ?>">
             <?php if (!empty($errors['image_path'])) {?>
                 <br><span class='error'><?= $errors['image_path'] ?></span>
             <?php } ?>
