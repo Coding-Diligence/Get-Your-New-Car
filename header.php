@@ -7,6 +7,9 @@
     </div>
     <div>
       <button class="search-submit">
+        <a class="fin" href="login.php">Connexion</a>
+      </button>
+      <button class="search-submit">
         <a class="fin" href="interface.php">Add Car</a>
       </button>
       <button class="search-submit">
