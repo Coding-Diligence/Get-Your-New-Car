@@ -1,3 +1,5 @@
+<?php include "database.php"; ?>
+<?php var_dump($_SESSION) ?>
 <nav>
   <div class="navbar">
     <div class="joe">
