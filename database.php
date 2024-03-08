@@ -6,14 +6,14 @@ switch ($_SERVER['SERVER_NAME']) {
 
         $paramsServer = array(
             'server'    => "localhost",
-            'database'  => "fastfoods",
+            'database'  => "car_management",
             'username'  => "root",
             'password'  => "",
             'port' => 3306,
         );
 
         define('PREFIX', '');
-        define('DNS', 'https://portfolio.test/' . PREFIX);
+        define('DNS', 'https://car.test/' . PREFIX);
         define('HOME', $_SERVER['CONTEXT_DOCUMENT_ROOT']);
 
         define('PATH_FILES', "files/");
@@ -24,10 +24,10 @@ switch ($_SERVER['SERVER_NAME']) {
         define('ENVIRONMENT', 'production');
 
         $paramsServer = array(
-            'server' => "portfolio.mysql.db",
-            'database' => "portfolio",
-            'username' => "portfolio",
-            'password' => "xxxxxxxxxxx",
+            'server' => "mysql.db",
+            'database' => "car_management",
+            'username' => "",
+            'password' => "",
             'port' => 3306
         );
 
