@@ -108,7 +108,7 @@ $cars_json = json_encode($cars);
             const displayFilteredCars = (filteredCars) => {
                 const html = filteredCars.map((car, index) => `
                     <div class="car-card">
-                        <img src="${car.img}" class="car-img">
+                        <img src="${car.image_path}" class="car-img">
                         <div class="car-details">
                             <div class="car-title">${car.name}</div>
                             <div class="car-info">
