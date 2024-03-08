@@ -12,7 +12,7 @@
 <body>
 <?php include_once "header.php"; ?>
   <div w3-include-html="header.html"></div>
-  <div class="d-flex justify-content-around mx-auto p-2" style="margin-top: 50px;">
+  <div class="d-flex justify-content-around mx-auto p-2 main">
     <div class="card paul-card" style="width: 30rem;">
       <div class="card-body">
         <img src="assets/voiture1.jpg" class="car-img">
@@ -20,6 +20,14 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <div class="car-location">ORLÉANS</div>
         <div class="car-price">9.000$</div>
+        <div class="modif_suppr">
+          <form action="interface.php">
+          <button type="submit" class="search-submit delete">modifier</button>
+          </form>
+          <form action="#">
+            <button type="submit" class="search-submit delete">Supprimé</button>
+          </form>
+        </div>
       </div>
       </div>
       <div class="card paul-card" style="width: 30rem;">
@@ -31,13 +39,7 @@
           <form><button type='submit' class="offer-submit">FAIRE UNE OFFRE</button></form>
         </div>
       </div>
-      </div>
-      <form action="interface.php">
-        <button type="submit" class="modifier">modifier</button>
-      </form>
-      <form action="#">
-        <button type="submit" class="delete">Supprimé</button>
-      </form>
+      </div>      
   </div>
 </body>
 <script>includeHTML();</script>
