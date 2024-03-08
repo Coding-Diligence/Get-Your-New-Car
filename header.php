@@ -7,8 +7,8 @@
       <a class="fin" href="index.php">Cardiction</a>
     </div>
     <div>
-      <a class="fin" href="interface.html">Add Car</a>
-      <a class="fin" href="message.html">Messagerie</a>
+      <a class="fin" href="interface.php">Add Car</a>
+      <a class="fin" href="message.php">Messagerie</a>
     </div>
   </div>
 </nav>
