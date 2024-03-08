@@ -36,11 +36,14 @@
           <h6 class="card-subtitle mb-2 text-body-secondary">Peugeot JSP</h6>
           <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, sint? Mollitia, fugit ducimus? Eum porro provident obcaecati nesciunt inventore quis magnam recusandae quidem rem, explicabo quia? Autem at tenetur cum.</p>
           <form><button type='submit' class="offer-submit">Payer</button></form><br>
-          <form><button type='submit' class="offer-submit">FAIRE UNE OFFRE</button></form>
+          <form class="get-offer"><button type='submit' class="offer-submit">FAIRE UNE OFFRE</button></form>
         </div>
       </div>
       </div>      
   </div>
 </body>
 <script>includeHTML();</script>
+<script src="./price-offer.js"></script>
 </html>
+
+
