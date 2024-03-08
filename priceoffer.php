@@ -25,7 +25,7 @@
           <button type="submit" class="search-submit delete">modifier</button>
           </form>
           <form action="#">
-            <button type="submit" class="search-submit delete" onclick="let result = confirm('Are you sure you want to delete?'); if (result) { event.preventDefault(); document.getElementById('delete-<?= $data['id']?>').submit(); }" title='Delete'>Supprimé</button>
+            <button type="submit" class="search-submit delete">Supprimé</button>
           </form>
         </div>
       </div>
