@@ -20,19 +20,19 @@ switch ($_SERVER['SERVER_NAME']) {
 
         break;
 
-    case 'your_mac_server_name': // Change 'your_mac_server_name' to the actual name of your Mac server
+    case 'localhost': 
         define('ENVIRONMENT', 'mac_development');
 
         $paramsServer = array(
             'server'    => "localhost",
             'database'  => "car_management", 
             'username'  => "root",
-            'password'  => "",
+            'password'  => "root",
             'port' => 3306,
         );
 
         define('PREFIX', '');
-        define('DNS', 'https://your_mac_server_domain/' . PREFIX); // Change 'your_mac_server_domain' to the actual domain of your Mac server
+        define('DNS', 'https://car.test/' . PREFIX); 
         define('HOME', $_SERVER['CONTEXT_DOCUMENT_ROOT']);
 
         define('PATH_FILES', "files/");
