@@ -161,6 +161,10 @@ body{
     margin: 2px 5px;
 }
 
+.car-info{
+    margin-left: 5px;
+}
+
 .car-price{
     font-family: var(--font2);
     font-size: 16px;
