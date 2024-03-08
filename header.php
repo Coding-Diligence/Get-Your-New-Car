@@ -8,13 +8,13 @@
     <div>
       <?php if(isset($_SESSION['connexion']) && $_SESSION['connexion'] == 'connected'):?>
         <button class="search-submit">
-          <a class="fin" href="./controllers/logout_controller.php">deconnexion</a>          
-        </button>
-        <button class="search-submit">
           <a class="fin" href="interface.php">Add Car</a>
         </button>
         <button class="search-submit">
           <a class="fin" href="message.php">Messagerie</a>
+        </button>
+        <button class="search-submit">
+          <a class="fin" href="./controllers/logout_controller.php">deconnexion</a>          
         </button>
         <?php else : ?>
           <button class="search-submit">
