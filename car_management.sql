@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 08, 2024 at 11:00 AM
+-- Generation Time: Mar 08, 2024 at 12:49 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.2.0
 
@@ -50,6 +50,30 @@ INSERT INTO `cars` (`id`, `name`, `price`, `color`, `kilometrage`, `state`, `ima
 (17, 'Gtrr', '18000.00', 'white', 15000, 'used', 'assets/voiture2.jpg'),
 (16, 'Subaru', '9000.00', 'blue', 3000, 'new', 'assets/voiture1.jpg'),
 (21, 'Mitsubishi Evo', '1700.00', 'white', 0, 'new', 'assets/voiture6.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `sender` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `profileImage` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`id`, `sender`, `text`, `time`, `profileImage`) VALUES
+(1, 'Bot', 'Hi, How can I help you today?', '2024-03-08 13:47:14', 'assets/1.jpg'),
+(2, 'user', 'Coucou', '2024-03-08 13:47:14', 'assets/2.jpg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
