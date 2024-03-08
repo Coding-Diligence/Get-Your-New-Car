@@ -31,8 +31,12 @@
         </div>
       </div>
       </div>
-      <button type="submit" class="modifier"><a href="C:\wamp64\www\Get-Your-New-Car\interface.php">modifier</a></button>
-      <button type="submit" class="delete"><a href="#">Supprimé</a></button>
+      <form action="interface.php">
+        <button type="submit" class="modifier">modifier</button>
+      </form>
+      <form action="#">
+        <button type="submit" class="delete">Supprimé</button>
+      </form>
   </div>
 </body>
 <script>includeHTML();</script>

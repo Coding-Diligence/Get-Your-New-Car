@@ -50,7 +50,9 @@
         </div>  
     </div>
     <div class="fait">
-        <button onclick="addCar()" class="search-submit"><a href="C:\wamp64\www\Get-Your-New-Car\index.php">Done</a></button>
+    <form action="index.php">
+        <button onclick="addCar()" class="search-submit">Done</button>
+    </form>
     </div>
     <div id="includedContent"></div>
     <script>includeHTML();</script>

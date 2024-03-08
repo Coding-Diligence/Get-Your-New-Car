@@ -94,7 +94,7 @@
                     </div>
                     <div class="car-location">Location: Orléans</div>
                     <div class="offer-button">
-                        <form action="priceoffer.html">
+                        <form action="priceoffer.php">
                             <button type="submit" class="offer-submit">View Offer</button>
                         </form>
                     </div>
