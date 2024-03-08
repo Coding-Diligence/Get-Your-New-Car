@@ -49,3 +49,28 @@ try {
     $_SESSION['db'] = 'Error!';
     die();
 }
+// $cars = [
+//     ['Subaru', 9000, 'blue', 3000, 'new', 'assets/voiture1.jpg'],
+//     ['Gtrr', 18000, 'white', 15000, 'used', 'assets/voiture2.jpg'],
+//     ['Dirt Car', 2500, 'blue', 17000, 'used','assets/voiture3.jpg'],
+//     ['Mitsubishi', 22000, 'grey', 148600, 'used','assets/voiture4.jpg'],
+//     ['Honda Type R 1998–2001', 29000, 'white', 1000, 'new','assets/voiture5.jpg'],
+//     ['Mitsubishi Evo', 1700, 'white', 0, 'new','assets/voiture6.jpg']
+// ];
+
+// foreach ($cars as $car) {
+//     $name = $car[0];
+//     $price = $car[1];
+//     $color = $car[2];
+//     $kilometrage = $car[3];
+//     $state = $car[4];
+//     $img = $car[5];
+
+//     // SQL INSERT statement
+//     $sql = "INSERT INTO cars (name, price, color, kilometrage, state, image_path) VALUES ('$name', $price, '$color', '$kilometrage', '$state', '$img')";
+
+//     // Execute the SQL statement
+//     if ($bdLink->query($sql) === TRUE) {
+//         echo "New record created successfully";
+//     }
+// }
