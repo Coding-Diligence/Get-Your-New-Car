@@ -166,3 +166,13 @@ body{
   background-color: var(--mainc2);
   transition: 0.5s;
 }
+
+.modifier:hover{
+  background-color: var(--mainc2);
+  transition: 0.5s;
+}
+
+.delete:hover{
+  background-color: var(--mainc2);
+  transition: 0.5s;
+}

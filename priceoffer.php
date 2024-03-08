@@ -31,6 +31,8 @@
         </div>
       </div>
       </div>
+      <button type="submit" class="modifier"><a href="C:\wamp64\www\Get-Your-New-Car\interface.php">modifier</a></button>
+      <button type="submit" class="delete"><a href="#">Supprimé</a></button>
   </div>
 </body>
 <script>includeHTML();</script>
