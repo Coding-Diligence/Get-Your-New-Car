@@ -1,61 +1,46 @@
 <?php
-switch ($_SERVER['SERVER_NAME']) {
-    case '127.0.0.1':
-    case 'localhost':
-        define('ENVIRONMENT', 'development');
+$system_info = php_uname();
 
-        $paramsServer = array(
-            'server'    => "localhost",
-            'database'  => "car_management",
-            'username'  => "root",
-            'password'  => "",
-            'port' => 3306,
-        );
+if (strpos($system_info, 'Windows') !== false) {
+    define('ENVIRONMENT', 'development');
 
-        define('PREFIX', '');
-        define('DNS', 'https://car.test/' . PREFIX);
-        define('HOME', $_SERVER['CONTEXT_DOCUMENT_ROOT']);
+    $paramsServer = array(
+        'server'    => "localhost",
+        'database'  => "car_management",
+        'username'  => "root",
+        'password'  => "",
+        'port' => 3306,
+    );
 
-        define('PATH_FILES', "files/");
+    define('DNS', 'https://car.test/');
+    define('HOME', $_SERVER['CONTEXT_DOCUMENT_ROOT']);
+} elseif (strpos($system_info, 'Darwin') !== false) {
+    define('ENVIRONMENT', 'mac_development');
 
-        break;
+    $paramsServer = array(
+        'server'    => "localhost",
+        'database'  => "car_management_mac",
+        'username'  => "root",
+        'password'  => "",
+        'port' => 3306,
+    );
 
-    case 'your_mac_server_name': // Change 'your_mac_server_name' to the actual name of your Mac server
-        define('ENVIRONMENT', 'mac_development');
+    define('DNS', 'https://car.test/');
+    define('HOME', $_SERVER['CONTEXT_DOCUMENT_ROOT']);
+} else {
+    define('ENVIRONMENT', 'production');
 
-        $paramsServer = array(
-            'server'    => "localhost",
-            'database'  => "car_management", 
-            'username'  => "root",
-            'password'  => "",
-            'port' => 3306,
-        );
+    $paramsServer = array(
+        'server' => "mysql.db",
+        'database' => "car_management",
+        'username' => "",
+        'password' => "",
+        'port' => 3306
+    );
 
-        define('PREFIX', '');
-        define('DNS', 'https://your_mac_server_domain/' . PREFIX); // Change 'your_mac_server_domain' to the actual domain of your Mac server
-        define('HOME', $_SERVER['CONTEXT_DOCUMENT_ROOT']);
-
-        define('PATH_FILES', "files/");
-
-        break;
-
-    default:
-        define('ENVIRONMENT', 'production');
-
-        $paramsServer = array(
-            'server' => "mysql.db",
-            'database' => "car_management",
-            'username' => "",
-            'password' => "",
-            'port' => 3306
-        );
-
-        define('PREFIX', '');
-        define('DNS', 'https://www.portfolio.fr/' . PREFIX);
-        define('HOME', $_SERVER['DOCUMENT_ROOT']);
-
-        define('PATH_FILES', "files/");
-        exit;
+    define('DNS', 'https://www.car.fr/');
+    define('HOME', $_SERVER['DOCUMENT_ROOT']);
+    exit;
 }
 
 session_start();
