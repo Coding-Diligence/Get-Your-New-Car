@@ -12,9 +12,13 @@
     --font2: poppins;
 }
 .fin {
+    text-decoration: none;
+    color: var(--txt2);
+}
+.title{
     color: var(--txt1);
     text-decoration: none;
-}   
+}
 .joe {
     display: flex;
     flex-direction: row;
