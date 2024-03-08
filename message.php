@@ -11,6 +11,7 @@
     <script src="script.js"></script>
 </head>
 <body>
+    <?php include_once "header.php"; ?>
   <div w3-include-html="header.html"></div>
 
     <section class="chat p-5 h-5" id="conversations-section"></section>

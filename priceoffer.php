@@ -10,6 +10,7 @@
   <script src="script.js"></script>
 </head>
 <body>
+<?php include_once "header.php"; ?>
   <div w3-include-html="header.html"></div>
   <div class="d-flex justify-content-around mx-auto p-2" style="margin-top: 50px;">
     <div class="card paul-card" style="width: 30rem;">

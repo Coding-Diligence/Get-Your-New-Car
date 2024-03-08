@@ -12,6 +12,7 @@
     <title>Get your new car!</title>
 </head>
 <body>
+    <?php include_once "header.php"; ?>
     <div w3-include-html="header.html"></div>
     <div class="block-info">
         <div class="information">
