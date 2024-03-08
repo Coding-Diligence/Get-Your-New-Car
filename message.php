@@ -1,11 +1,28 @@
 <?php
-include_once "database.php"; // Include the file to connect to the database
+include_once "database.php"; 
 
-// Fetch messages from the database
 $sql = "SELECT * FROM messages";
 $stmt = $bdLink->prepare($sql);
 $stmt->execute();
 $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+function sendMessage($text) {
+    global $bdLink;
+
+    $sql = "INSERT INTO messages (sender, text, time, profileImage) VALUES ('user', :text, NOW(), 'assets/2.jpg')";
+    $stmt = $bdLink->prepare($sql);
+    $stmt->bindParam(':text', $text);
+    $stmt->execute();
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $messageText = $_POST["message"];
+    if (!empty($messageText)) {
+        sendMessage($messageText);
+        header("Location: message.php");
+        exit();
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -73,10 +90,12 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     ${conversationHTML}
                 </div>
                 <div class="btn_parent">
-                    <div class="input-group sticky-md-bottom mb-3">
-                        <input type="text" class="form-control" placeholder="Type your text" aria-label="Type your text" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
-                    </div>
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                        <div class="input-group sticky-md-bottom mb-3">
+                            <input id="message" name="message" type="text" placeholder="Say something..." autocomplete="off" autofocus="true" />
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Send</button>
+                        </div>
+                    </form>
                 </div>
                 `);
             }
