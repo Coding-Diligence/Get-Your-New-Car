@@ -5,7 +5,7 @@ require './database.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = htmlspecialchars($_POST['email']);
     $query = "SELECT * FROM utilisateur WHERE email = :email";
-    $stmt = $bdd->prepare($query);
+    $stmt = $bdLink->prepare($query);
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['role'] = $user['role'];
         $_SESSION['status'] = 'success';
         $_SESSION['message'] = 'Vous vous êtes bien connecté.e !';
-        header("Location: ?page=homepage");
+        header("Location: index.php");
         
         exit();
     } else {
