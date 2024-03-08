@@ -20,11 +20,3 @@ function includeHTML() {
     }
   }
 }
-const car = [
-  { name: 'Subaru',price: 9000, color: "blue", img: "assets/voiture1.jpg" }, 
-  { name: 'Gtrr',price: 18000, color: "white", img: "assets/voiture2.jpg" },
-  { name: 'Dirt Car',price: 2500, color: "blue", img: "assets/voiture3.jpg" },
-  { name: 'Mitsubishi',price: 22000, color: "grey", img: "assets/voiture4.jpg" },
-  { name: 'Honda Type R 1998–2001',price: 29000, color: 'white', img: "assets/voiture5.jpg" },
-  { name: 'Mitsubishi Evo', price: 1700, color: 'white', img: "assets/voiture6.jpg" }
-];
