@@ -114,14 +114,6 @@
 });
 includeHTML();
 
-// Example query to select all cars
-pool.query('SELECT * FROM cars', (error, results, fields) => {
-    if (error) {
-        console.error('Error executing query:', error);
-        return;
-    }
-    console.log('Cars:', results);
-});
 </script>
 </body>
 </html>
