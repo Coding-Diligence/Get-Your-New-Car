@@ -3,11 +3,15 @@
   <div class="navbar">
     <div class="joe">
       <img src="assets/logo.png" class="logo">
-      <a class="fin" href="index.php">Cardiction</a>
+      <a class="title" href="index.php">Cardiction</a>
     </div>
     <div>
-      <a class="fin" href="interface.php">Add Car</a>
-      <a class="fin" href="message.php">Messagerie</a>
+      <button class="search-submit">
+        <a class="fin" href="interface.php">Add Car</a>
+      </button>
+      <button class="search-submit">
+        <a class="fin" href="message.php">Messagerie</a>
+      </button>
     </div>
   </div>
 </nav>
