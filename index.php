@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Get your new car !</title>
-    <script src="script.js"></script>
+    <script src="script.js"></script><script src="database.js"></script>
 </head>
 <body>
-    <div w3-include-html="header.html"></div>
+    <?php include_once "header.php"; ?>
     <div class="header">
         <div class="header-title">Get your new car !</div>
     </div>
@@ -113,6 +113,15 @@
     applyFilters(); 
 });
 includeHTML();
+
+// Example query to select all cars
+pool.query('SELECT * FROM cars', (error, results, fields) => {
+    if (error) {
+        console.error('Error executing query:', error);
+        return;
+    }
+    console.log('Cars:', results);
+});
 </script>
 </body>
 </html>
