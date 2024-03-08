@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $role= 'user';
     
 
-    $stmt = $bdd->prepare("INSERT INTO utilisateur (nom, prenom, email, password, role) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $bdLink->prepare("INSERT INTO utilisateur (nom, prenom, email, password, role) VALUES (?, ?, ?, ?, ?)");
     $stmt->bindParam(1, $nom, PDO::PARAM_STR);
     $stmt->bindParam(2, $prenom, PDO::PARAM_STR);
     $stmt->bindParam(3, $email, PDO::PARAM_STR);
