@@ -1,3 +1,16 @@
+<?php
+include_once "database.php"; // Include the file to connect to the database
+
+// Fetch cars from the database
+$sql = "SELECT * FROM cars";
+$stmt = $bdLink->prepare($sql);
+$stmt->execute();
+$cars = $stmt->fetchAll();
+
+// Convert the fetched data into a JSON string
+$cars_json = json_encode($cars);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -20,6 +33,7 @@
                     <span class="material-symbols-outlined">search</span>
                     <input class="inp-search" type="text" id="searchInput" placeholder="search">
                 </div>
+                <!-- Dropdowns for filtering -->
                 <div class="dropdown">
                     <select id="carPrice" class="carType">
                         <option value="all" class="allcars">Price</option>
@@ -50,70 +64,77 @@
             </div>
         </div>
     </form>
+    <!-- Container to display cars -->
     <div class="cars" id="cars">
+        <?php
+        // Check if $cars_json is set (i.e., cars data is available)
+        if (isset($cars_json)) {
+            // Output JavaScript code to initialize the 'car' variable with the fetched cars data
+            echo "<script> const car = $cars_json; </script>";
+        }
+        ?>
     </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    const carPriceSelect = document.getElementById('carPrice');
-    const carModelSelect = document.getElementById('carModel');
-    const carColorSelect = document.getElementById('carColor');
-    const searchInput = document.getElementById('searchInput');
+    <script>
+        // JavaScript code for filtering and displaying cars
+        document.addEventListener('DOMContentLoaded', function () {
+            const carPriceSelect = document.getElementById('carPrice');
+            const carModelSelect = document.getElementById('carModel');
+            const carColorSelect = document.getElementById('carColor');
+            const searchInput = document.getElementById('searchInput');
 
-    const applyFilters = () => {
-        const selectedPrice = carPriceSelect.value;
-        const selectedModel = carModelSelect.value;
-        const selectedColor = carColorSelect.value;
-        const searchString = searchInput.value.toLowerCase();
+            const applyFilters = () => {
+                const selectedPrice = carPriceSelect.value;
+                const selectedModel = carModelSelect.value;
+                const selectedColor = carColorSelect.value;
+                const searchString = searchInput.value.toLowerCase();
 
-        const filteredCars = car.filter(car => {
-            const passesPriceFilter = selectedPrice === 'all' || (
-                selectedPrice === '0-3000' && car.price <= 3000 ||
-                selectedPrice === '3000-10.000' && car.price > 3000 && car.price <= 10000 ||
-                selectedPrice === '+ 10.000' && car.price > 10000
-            );
+                const filteredCars = car.filter(car => {
+                    const passesPriceFilter = selectedPrice === 'all' || (
+                        selectedPrice === '0-3000' && car.price <= 3000 ||
+                        selectedPrice === '3000-10.000' && car.price > 3000 && car.price <= 10000 ||
+                        selectedPrice === '+ 10.000' && car.price > 10000
+                    );
 
-            const passesModelFilter = selectedModel === 'all' || car.name === selectedModel;
-            const passesColorFilter = selectedColor === 'all' || car.color === selectedColor;
-            const passesSearchFilter = car.name.toLowerCase().includes(searchString);
+                    const passesModelFilter = selectedModel === 'all' || car.name === selectedModel;
+                    const passesColorFilter = selectedColor === 'all' || car.color === selectedColor;
+                    const passesSearchFilter = car.name.toLowerCase().includes(searchString);
 
-            return passesPriceFilter && passesModelFilter && passesColorFilter && passesSearchFilter;
+                    return passesPriceFilter && passesModelFilter && passesColorFilter && passesSearchFilter;
+                });
+
+                displayFilteredCars(filteredCars);
+            };
+
+            const displayFilteredCars = (filteredCars) => {
+                const html = filteredCars.map((car, index) => `
+                    <div class="car-card">
+                        <img src="${car.img}" class="car-img">
+                        <div class="car-details">
+                            <div class="car-title">${car.name}</div>
+                            <div class="car-info">
+                                <div class="car-info-item">Color: ${car.color}</div>
+                                <div class="car-info-item">Price: $${car.price}</div>
+                            </div>
+                            <div class="car-location">Location: Orléans</div>
+                            <div class="offer-button">
+                                <form action="priceoffer.php">
+                                    <button type="submit" class="offer-submit">View Offer</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                document.getElementById('cars').innerHTML = html;
+            };
+
+            carPriceSelect.addEventListener('change', applyFilters);
+            carModelSelect.addEventListener('change', applyFilters);
+            carColorSelect.addEventListener('change', applyFilters);
+            searchInput.addEventListener('input', applyFilters);
+
+            applyFilters(); 
         });
-
-        displayFilteredCars(filteredCars);
-    };
-
-    const displayFilteredCars = (filteredCars) => {
-        const html = filteredCars.map((car, index) => `
-            <div class="car-card">
-                <img src="${car.img}" class="car-img">
-                <div class="car-details">
-                    <div class="car-title">${car.name}</div>
-                    <div class="car-info">
-                        <div class="car-info-item">Color: ${car.color}</div>
-                        <div class="car-info-item">Price: $${car.price}</div>
-                    </div>
-                    <div class="car-location">Location: Orléans</div>
-                    <div class="offer-button">
-                        <form action="priceoffer.php">
-                            <button type="submit" class="offer-submit">View Offer</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-
-        document.getElementById('cars').innerHTML = html;
-    };
-
-    carPriceSelect.addEventListener('change', applyFilters);
-    carModelSelect.addEventListener('change', applyFilters);
-    carColorSelect.addEventListener('change', applyFilters);
-    searchInput.addEventListener('input', applyFilters);
-
-    applyFilters(); 
-});
-includeHTML();
-
-</script>
+    </script>
 </body>
 </html>
