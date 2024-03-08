@@ -1,0 +1,168 @@
+:root{
+  --bg1: #f5f5f5;
+  --bg2: #dbdbdb;
+  --bg3: #ababab;
+  --txt1: #141414;
+  --txt2: #fcfcfc;
+  --txt3: #575757;
+  --opa1: rgba(55, 55, 55, 0.5);
+  --mainc1: #3e57a8;
+  --mainc2: #344a91;
+  --font1: inter;
+  --font2: poppins;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font1);
+  font-size: 11px;
+}
+
+
+/* NAVBAR */
+
+
+.navbar, .coucou{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--bg1);
+  font-size: 1.5em;
+}
+
+.logo{
+  height: 40px;
+}
+
+.logo-title{
+  font-family: var(--font2);
+}
+
+.annonce-disp {
+  display : flex;
+  width: 100%;
+  flex-direction: row; 
+}
+
+.container-offers {
+  width : 100%;
+}
+
+.car-card{
+  width: 100%;
+  background-color: var(--bg2);
+  border-radius: 5px;
+}
+
+.car-img{
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  height: 200px;
+}
+
+.car-title{
+  font-family: var(--font2);
+  font-size: 30px;
+  margin: 2px 5px;
+}
+
+.car-location{
+  font-family: var(--font2);
+  color: var(--txt3);
+  font-size: 14px;
+  margin: 2px 5px;
+}
+
+.car-price{
+  font-family: var(--font2);
+  font-size: 16px;
+  margin: 15px 5px;
+}
+
+.car-card img{
+  object-fit: cover;
+  position: top center;
+}
+
+.paul {
+  width: 45px; 
+  height: 55px !important;
+}
+
+.card-body {
+  background-color : var(--bg1) !important; 
+}
+
+
+.header{
+  background-image: url(assets/bann.jpg);
+  width: 100%;
+  height: 650px;
+  background-position: 75% 75%;
+}
+
+.header-title{
+  padding-top: 300px;
+  font-family: var(--font2);
+  font-size: 40px;
+  text-align: center;
+  width: 100%;
+  color: var(--bg1);
+  background-color: var(--opa1);
+  height: 350px;
+}
+
+.searchbar{
+  width: 80%;
+  height: 50px;
+  margin: auto;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: var(--bg2);
+}
+
+.searchbar-int{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.searching{
+  background-color: var(--bg1);
+  border-radius: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.inp-search{
+  background: none;
+  border: none !important;
+  outline: none !important;
+}
+
+.search-submit{
+  padding: 5px 10px;
+  background-color: var(--mainc1);
+  border-radius: 5px;
+  text-transform: uppercase;
+  height: 40px;
+  border: none;
+  color: var(--txt2);
+  transition: 0.5s;
+}
+
+.search-submit:hover{
+  background-color: var(--mainc2);
+  transition: 0.5s;
+}

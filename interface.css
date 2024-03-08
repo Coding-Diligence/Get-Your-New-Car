@@ -1,0 +1,127 @@
+:root{
+    --bg1: #f5f5f5;
+    --bg2: #dbdbdb;
+    --bg3: #ababab;
+    --txt1: #141414;
+    --txt2: #fcfcfc;
+    --txt3: #575757;
+    --opa1: rgba(55, 55, 55, 0.5);
+    --mainc1: #3e57a8;
+    --mainc2: #344a91;
+    --font1: inter;
+    --font2: poppins;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: var(--font1);
+    font-size: 11px;
+}
+
+
+/* NAVBAR */
+
+
+.navbar{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--bg1);
+    font-size: 1.5em;
+}
+
+.logo{
+    height: 40px;
+}
+
+.logo-title{
+    font-family: var(--font2);
+}
+
+
+/* HEADER */
+
+
+.header-title{
+    padding-top: 20px;
+    font-family: var(--font2);
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    color: var(--bg1);
+    background-color: var(--opa1);
+    height: 50px;
+}
+
+.block-info{
+    display: flex;
+    width: 80%;
+    margin-top: 50px !important;
+    gap: 10px;
+    margin: auto;
+}
+
+.information{
+    padding: 20px;
+    width: 50%;
+    background-color: var(--bg2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+    border-radius: 5px;
+}
+.name{
+    display: flex;
+    flex-direction: column;
+}
+
+.name-title{
+    font-size: 14px;
+    font-family: var(--font2);
+}
+
+.name-input{
+    outline: none !important;
+    background-color: var(--bg1);
+    border: 0;
+    padding: 5px;
+}
+
+.inp-img{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    width: 50%;
+    border-radius: 5px;
+    background-color: var(--bg2);
+}
+
+.search-submit{
+    padding: 5px 10px;
+    background-color: var(--mainc1);
+    border-radius: 5px;
+    text-transform: uppercase;
+    height: 40px;
+    border: none;
+    color: var(--txt2);
+    transition: 0.5s;
+}
+
+.search-submit:hover{
+    background-color: var(--mainc2);
+    transition: 0.5s;
+}
+
+.fait{
+    padding-top: 10px;
+    margin: auto;
+    width: 80%;
+    text-align: right;
+}
