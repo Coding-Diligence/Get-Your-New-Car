@@ -21,11 +21,11 @@
         <div class="car-location">ORLÉANS</div>
         <div class="car-price">9.000$</div>
         <div class="modif_suppr">
-          <form action="interface.php">
+          <form action="#">
           <button type="submit" class="search-submit delete">modifier</button>
           </form>
           <form action="#">
-            <button type="submit" class="search-submit delete">Supprimé</button>
+            <button type="submit" class="search-submit delete" onclick="let result = confirm('Are you sure you want to delete?'); if (result) { event.preventDefault(); document.getElementById('delete-<?= $data['id']?>').submit(); }" title='Delete'>Supprimé</button>
           </form>
         </div>
       </div>
