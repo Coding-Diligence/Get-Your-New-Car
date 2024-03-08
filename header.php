@@ -1,4 +1,9 @@
-<?php var_dump($_SESSION) ?>
+<?php 
+if(!isset($_SESSION)){
+  session_start();
+}
+var_dump($_SESSION);
+?>
 <nav>
   <div class="navbar">
     <div class="joe">
